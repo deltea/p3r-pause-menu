@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@theme {
+  --color-fg: #fff;
+  --color-bg: #015FCC;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-fg;
+  }
+}
