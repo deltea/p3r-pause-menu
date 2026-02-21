@@ -14,8 +14,12 @@
 
 <main class="h-screen w-screen relative">
   {#if !isStarted}
-    <div class="fixed bg-bg size-full flex opacity-80 justify-center items-center z-10" transition:fade>
-      <button onclick={start} class=" bg-fg text-bg px-4 py-3 cursor-pointer rounded">ENTER</button>
+    <div class="fixed bg-bg/80 size-full flex flex-col gap-32 justify-center items-center z-10" transition:fade>
+      <h1 class="bg-fg text-bg px-6 py-4 cursor-pointer rounded text-6xl rotate-4">PERSONA 3 PAUSE MENU</h1>
+      <button onclick={start} class="text-6xl flex gap-4">
+        <span>ENTER</span>
+        <iconify-icon icon="mdi:arrow-right-bold" class=" text-6xl"></iconify-icon>
+      </button>
     </div>
   {/if}
 

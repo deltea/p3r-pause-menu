@@ -1,12 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Rodin Pro";
+  src: url("/fonts/Rodin Pro EB.otf") format("opentype");
+  font-weight: 300 800;
+  font-style: normal;
+}
+
 @theme {
   --color-fg: #fff;
   --color-bg: #015FCC;
+
+  --font-rodin: "Rodin Pro", sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-bg text-fg;
+    @apply bg-bg text-fg font-rodin tracking-[-0.35em];
   }
 }
