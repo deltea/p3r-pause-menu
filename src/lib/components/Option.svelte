@@ -70,6 +70,20 @@
 >
   {@render children()}
 
+  <svg width="0" height="0">
+    <defs>
+      <mask id="selector-mask">
+        <rect width="100%" height="100%" fill="black" />
+        <g transform="translate(-16.853754,-49.684265)">
+          <path
+            style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:5;paint-order:stroke fill markers;transform: rotate({option.rotation + 18}deg) scaleY(1) scaleX({1 + option.name.length * 0.08 - 0.6})"
+            d="M 16.853754,100.31573 133.14625,49.684266 112.14751,97.331142 Z"
+            id="path1" />
+        </g>
+      </mask>
+    </defs>
+  </svg>
+
   <div class={cn("absolute inset-0 text-red masked-text", { "hidden": !isSelected })}>
     {@render children()}
   </div>
