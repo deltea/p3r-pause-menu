@@ -97,4 +97,10 @@
       <Control key="A">Close</Control>
     </div>
   </div>
+
+  <!-- side text -->
+  <div class="text-[30rem] absolute flex gap-8 w-[100vh] h-[30rem] rotate-90 -translate-y-[45rem] origin-bottom-left left-0 top-0 tracking-[-0.2em] text-muted italic">
+    <span class="z-1">0{selectedIndex + 1}</span>
+    <span class="text-black">MAIN</span>
+  </div>
 </main>
