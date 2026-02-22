@@ -7,6 +7,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Rodin Pro Bold";
+  src: url("/fonts/Rodin Pro UB.otf") format("opentype");
+  font-weight: 300 800;
+  font-style: normal;
+}
+
 @theme {
   --color-fg: #fff;
   --color-bg: #015FCC;
@@ -16,6 +23,7 @@
   --color-button-3: #77FEFC;
 
   --font-rodin: "Rodin Pro", sans-serif;
+  --font-rodin-bold: "Rodin Pro Bold", sans-serif;
 }
 
 @layer base {

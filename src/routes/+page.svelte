@@ -53,11 +53,12 @@
   ></video>
 
   <!-- options -->
-  <div class="ml-260 flex flex-col items-start justify-center h-full relative -space-y-4">
+  <div class="ml-260 flex flex-col items-start justify-center h-full relative -space-y-2">
     <SelectionCursor
-      left="{-100}px"
-      top="{selectedIndex * 80 + 190}px"
+      left="{-50}px"
+      top="{selectedIndex * 86 + 180}px"
       rotation={rotations[selectedIndex]}
+      scale={options[selectedIndex].length * 0.15 + 0.3}
     />
 
     {#each options as option, i}

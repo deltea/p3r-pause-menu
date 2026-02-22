@@ -57,7 +57,8 @@
     {
       [colors[(index + 2) % colors.length]]: !isSelected,
       "text-black": isSelected,
-      "z-5!": isSelected
+      "z-5!": isSelected,
+      "font-rodin-bold": isSelected,
     }
   )}
 >
