@@ -16,6 +16,7 @@
   ];
   const rotations = [-20, -10, -15, -15, 0, -14, -8, -5, 8];
   const zIndices = [1, 0, 1, 2, 0, 1, 0, 1, 0];
+  const offsets = [-20, 0, 0, 0, 0, 0, 0, 0, 0];
 
   let backgroundVideo: HTMLVideoElement;
   let isStarted = $state(false);
@@ -53,7 +54,7 @@
 
   <!-- options -->
   <div class="ml-260 flex flex-col items-start justify-center h-full relative -space-y-4">
-    <SelectionCursor left="{-120}px" top="{selectedIndex * 95 + 180}px" />
+    <SelectionCursor left="{-100}px" top="{selectedIndex * 80 + 190}px" />
 
     {#each options as option, i}
       <Option
@@ -62,7 +63,7 @@
         rotation={rotations[i]}
         isSelected={selectedIndex === i}
         onSelect={() => setIndex(i)}
-        offsetX={0}
+        offsetX={offsets[i]}
         offsetY={-200}
       >
         {option}

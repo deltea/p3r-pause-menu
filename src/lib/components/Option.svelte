@@ -56,7 +56,7 @@
     {
       [colors[(index + 2) % colors.length]]: !isSelected,
       "text-black": isSelected,
-      "z-3!": isSelected
+      "z-5!": isSelected
     }
   )}
 >

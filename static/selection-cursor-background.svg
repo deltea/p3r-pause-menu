@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="600"
-   height="600"
-   viewBox="0 0 150 150"
+   width="570.05701"
+   height="220.00702"
+   viewBox="0 0 142.51425 55.001755"
    version="1.1"
    id="svg1"
    inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
@@ -36,13 +36,23 @@
      borderlayer="true"
      labelstyle="default"
      inkscape:antialias-rendering="true"
-     inkscape:clip-to-page="false" />
+     inkscape:clip-to-page="false">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="142.51425"
+       height="55.001755"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
   <defs
      id="defs1" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-3.7428765,-47.499123)">
     <path
        style="fill:#fe93e3;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:5;paint-order:stroke fill markers"
        d="M 3.7428765,102.50088 146.25712,47.499123 118.75625,95.465764 Z"
