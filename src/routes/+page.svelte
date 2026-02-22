@@ -3,7 +3,7 @@
   import SelectionCursor from "$lib/components/SelectionCursor.svelte";
   import { fade } from "svelte/transition";
   import type { OptionValue } from "$lib/types";
-    import { onMount } from "svelte";
+  import { onMount } from "svelte";
 
   const options: OptionValue[] = [
     { name: "SKILL", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 50 },
