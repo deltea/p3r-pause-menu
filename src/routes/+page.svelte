@@ -3,6 +3,7 @@
   import SelectionCursor from "$lib/components/SelectionCursor.svelte";
   import { fade } from "svelte/transition";
   import type { OptionValue } from "$lib/types";
+    import { onMount } from "svelte";
 
   const options: OptionValue[] = [
     { name: "SKILL", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 50 },
@@ -19,18 +20,24 @@
   let backgroundVideo: HTMLVideoElement;
   let isStarted = $state(false);
   let selectedIndex = $state(0);
+  let currentOptionElement = $state<HTMLButtonElement>();
 
   function setIndex(index: number) {
     selectedIndex = index;
+    currentOptionElement = document.getElementById(`option-${index}`) as HTMLButtonElement;
   }
 
   function start() {
     isStarted = true;
     backgroundVideo.play();
   }
+
+  onMount(() => {
+    setIndex(0);
+  });
 </script>
 
-<main class="h-screen w-screen relative">
+<main class="h-screen w-screen relative overflow-hidden">
   {#if !isStarted}
     <div class="fixed bg-bg/80 size-full flex flex-col gap-32 justify-center items-center z-10" transition:fade>
       <h1 class="bg-fg text-bg px-6 py-4 rounded text-6xl rotate-4">PERSONA 3 PAUSE MENU</h1>
@@ -51,12 +58,14 @@
   ></video>
 
   <!-- options -->
-  <div class="ml-260 flex flex-col items-start justify-center h-full relative -space-y-2">
-    <SelectionCursor
-      left={-50}
-      top={selectedIndex * 86 + 200}
-      currentOption={options[selectedIndex]}
-    />
+  <div class="ml-220 flex flex-col items-start justify-center h-full relative -space-y-2">
+    {#if currentOptionElement}
+      <SelectionCursor
+        left={currentOptionElement.offsetLeft + options[selectedIndex].offsetX}
+        top={currentOptionElement.offsetTop + options[selectedIndex].offsetY}
+        currentOption={options[selectedIndex]}
+      />
+    {/if}
 
     {#each options as option, i}
       <Option

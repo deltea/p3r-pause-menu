@@ -48,7 +48,7 @@
       translateY: option.offsetY,
       rotate: option.rotation
     });
-  })
+  });
 </script>
 
 <button
@@ -57,8 +57,9 @@
   onfocus={select}
   style:z-index={option.zIndex}
   style:clip-path="url(#selectionCursor)"
+  id="option-{index}"
   class={cn(
-    "text-8xl tracking-[-0.14em] italic cursor-pointer clip",
+    "text-8xl tracking-[-0.14em] italic cursor-pointer bg-green500",
     {
       [colors[(index + 2) % colors.length]]: !isSelected,
       "text-black": isSelected,
