@@ -54,7 +54,11 @@
 
   <!-- options -->
   <div class="ml-260 flex flex-col items-start justify-center h-full relative -space-y-4">
-    <SelectionCursor left="{-100}px" top="{selectedIndex * 80 + 190}px" />
+    <SelectionCursor
+      left="{-100}px"
+      top="{selectedIndex * 80 + 190}px"
+      rotation={rotations[selectedIndex]}
+    />
 
     {#each options as option, i}
       <Option

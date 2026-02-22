@@ -51,8 +51,9 @@
   onfocus={select}
   style:transform={`rotate(${rotation}deg)`}
   style:z-index={zIndex}
+  style:clip-path="url(#selectionCursor)"
   class={cn(
-    "text-8xl tracking-[-0.14em] italic cursor-pointer",
+    "text-8xl tracking-[-0.14em] italic cursor-pointer clip",
     {
       [colors[(index + 2) % colors.length]]: !isSelected,
       "text-black": isSelected,
