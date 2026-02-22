@@ -20,13 +20,14 @@
   } = $props();
 
   $effect(() => {
-    if (!isSelected) {
+    if (isSelected) {
+      select();
+    } else {
       deselect();
     }
   })
 
   function select() {
-    onSelect();
     animate(element, {
       scale: 1.5,
       duration: 100,
@@ -53,13 +54,12 @@
 
 <button
   bind:this={element}
-  onmouseover={select}
+  onmouseover={onSelect}
   onfocus={select}
   style:z-index={option.zIndex}
-  style:clip-path="url(#selectionCursor)"
   id="option-{index}"
   class={cn(
-    "text-8xl tracking-[-0.14em] italic cursor-pointer bg-green500",
+    "text-7xl tracking-[-0.14em] italic cursor-pointer block relative",
     {
       [colors[(index + 2) % colors.length]]: !isSelected,
       "text-black": isSelected,
@@ -69,4 +69,8 @@
   )}
 >
   {@render children()}
+
+  <div class={cn("absolute inset-0 text-red masked-text", { "hidden": !isSelected })}>
+    {@render children()}
+  </div>
 </button>

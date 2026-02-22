@@ -17,6 +17,7 @@
 @theme {
   --color-fg: #fff;
   --color-bg: #015FCC;
+  --color-red: #F00;
 
   --color-button-1: #16CFFB;
   --color-button-2: #7DE6FD;
@@ -30,4 +31,13 @@
   body {
     @apply bg-bg text-fg font-rodin tracking-[-0.35em];
   }
+}
+
+@utility masked-text {
+  mask: url(#selector-mask);
+  -webkit-mask: url(#selector-mask);
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
 }

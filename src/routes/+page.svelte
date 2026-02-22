@@ -9,7 +9,7 @@
     { name: "SKILL", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 50 },
     { name: "ITEM", rotation: -10, zIndex: 0, offsetX: 0, offsetY: 40 },
     { name: "EQUIP", rotation: -15, zIndex: 1, offsetX: -60, offsetY: 30 },
-    { name: "PERSONA", rotation: -15, zIndex: 2, offsetX: -90, offsetY: 10 },
+    { name: "PERSONA", rotation: -15, zIndex: 2, offsetX: -90, offsetY: 20 },
     { name: "STATS", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 20 },
     { name: "QUEST", rotation: -14, zIndex: 1, offsetX: -60, offsetY: 20 },
     { name: "SOCIAL LINK", rotation: -8, zIndex: 2, offsetX: 0, offsetY: 0 },
@@ -58,7 +58,7 @@
   ></video>
 
   <!-- options -->
-  <div class="ml-220 flex flex-col items-start justify-center h-full relative -space-y-2">
+  <div class="ml-230 flex flex-col items-start justify-center h-full relative -space-y-2">
     {#if currentOptionElement}
       <SelectionCursor
         left={currentOptionElement.offsetLeft + options[selectedIndex].offsetX}
