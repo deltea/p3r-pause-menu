@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils";
-  import { type Snippet } from "svelte";
-  import { animate, spring } from "animejs";
+  import { onMount, type Snippet } from "svelte";
+  import { animate, spring, utils } from "animejs";
   import type { OptionValue } from "$lib/types";
 
   const colors = [
@@ -41,13 +41,20 @@
       duration: 0
     });
   }
+
+  onMount(() => {
+    utils.set(element, {
+      translateX: option.offsetX,
+      translateY: option.offsetY,
+      rotate: option.rotation
+    });
+  })
 </script>
 
 <button
   bind:this={element}
   onmouseover={select}
   onfocus={select}
-  style:transform={`rotate(${option.rotation}deg)`}
   style:z-index={option.zIndex}
   style:clip-path="url(#selectionCursor)"
   class={cn(

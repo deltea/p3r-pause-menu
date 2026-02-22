@@ -5,15 +5,15 @@
   import type { OptionValue } from "$lib/types";
 
   const options: OptionValue[] = [
-    { name: "SKILL", rotation: -20, zIndex: 1, offsetX: -20, offsetY: 0 },
-    { name: "ITEM", rotation: -10, zIndex: 0, offsetX: 0, offsetY: 0 },
-    { name: "EQUIP", rotation: -15, zIndex: 1, offsetX: 0, offsetY: 0 },
-    { name: "PERSONA", rotation: -15, zIndex: 2, offsetX: 0, offsetY: 0 },
-    { name: "STATS", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 0 },
-    { name: "QUEST", rotation: -14, zIndex: 1, offsetX: 0, offsetY: 0 },
-    { name: "SOCIAL LINK", rotation: -8, zIndex: 0, offsetX: 0, offsetY: 0 },
-    { name: "CALENDAR", rotation: -5, zIndex: 1, offsetX: 0, offsetY: 0 },
-    { name: "SYSTEM", rotation: 8, zIndex: 0, offsetX: 0, offsetY: 0 }
+    { name: "SKILL", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 50 },
+    { name: "ITEM", rotation: -10, zIndex: 0, offsetX: 0, offsetY: 40 },
+    { name: "EQUIP", rotation: -15, zIndex: 1, offsetX: -60, offsetY: 30 },
+    { name: "PERSONA", rotation: -15, zIndex: 2, offsetX: -90, offsetY: 10 },
+    { name: "STATS", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 20 },
+    { name: "QUEST", rotation: -14, zIndex: 1, offsetX: -60, offsetY: 20 },
+    { name: "SOCIAL LINK", rotation: -8, zIndex: 2, offsetX: 0, offsetY: 0 },
+    { name: "CALENDAR", rotation: -5, zIndex: 1, offsetX: -80, offsetY: 0 },
+    { name: "SYSTEM", rotation: 8, zIndex: 0, offsetX: 20, offsetY: 0 }
   ]
 
   let backgroundVideo: HTMLVideoElement;
@@ -54,7 +54,7 @@
   <div class="ml-260 flex flex-col items-start justify-center h-full relative -space-y-2">
     <SelectionCursor
       left={-50}
-      top={selectedIndex * 86 + 180}
+      top={selectedIndex * 86 + 200}
       currentOption={options[selectedIndex]}
     />
 
