@@ -4,6 +4,7 @@
   import { fade } from "svelte/transition";
   import type { OptionValue } from "$lib/types";
   import { onMount } from "svelte";
+    import Control from "$lib/components/Control.svelte";
 
   const options: OptionValue[] = [
     { name: "SKILL", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 30 },
@@ -39,7 +40,7 @@
 
 <main class="h-screen w-screen relative overflow-hidden">
   {#if !isStarted}
-    <div class="fixed bg-bg/80 size-full flex flex-col gap-32 justify-center items-center z-10" transition:fade>
+    <div class="fixed bg-bg/80 size-full flex flex-col gap-32 justify-center items-center z-10 tracking-[-0.35em]" transition:fade>
       <h1 class="bg-fg text-bg px-6 py-4 rounded text-6xl rotate-4">PERSONA 3 PAUSE MENU</h1>
       <button onclick={start} class="text-6xl flex gap-4 cursor-pointer">
         <span>ENTER</span>
@@ -77,5 +78,23 @@
         {option.name}
       </Option>
     {/each}
+  </div>
+
+  <!-- controls -->
+  <div class="absolute bottom-0 right-0 font-new-rodin flex flex-col items-start">
+    <p class="italic text-3xl pr-20">
+      View/Change Equipment
+    </p>
+
+    <div class="flex items-center w-full">
+      <span class="">Command</span>
+      <hr class="border border-fg w-full grow">
+    </div>
+
+    <!-- controls -->
+    <div class="flex gap-4 items-center justify-end w-full pr-20 mt-4 mb-6">
+      <Control key="B">Confirm</Control>
+      <Control key="A">Close</Control>
+    </div>
   </div>
 </main>

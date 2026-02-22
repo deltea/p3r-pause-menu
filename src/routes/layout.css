@@ -8,8 +8,22 @@
 }
 
 @font-face {
+  font-family: "Rodin Pro Medium";
+  src: url("/fonts/Rodin Pro DB.otf") format("opentype");
+  font-weight: 300 800;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Rodin Pro Bold";
   src: url("/fonts/Rodin Pro UB.otf") format("opentype");
+  font-weight: 300 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NewRodin Pro";
+  src: url("/fonts/NewRodin Pro DB.otf") format("opentype");
   font-weight: 300 800;
   font-style: normal;
 }
@@ -17,7 +31,7 @@
 @theme {
   --color-fg: #fff;
   --color-bg: #015FCC;
-  --color-red: #F00;
+  --color-red: #FF52CB;
 
   --color-button-1: #16CFFB;
   --color-button-2: #7DE6FD;
@@ -25,11 +39,12 @@
 
   --font-rodin: "Rodin Pro Bold", sans-serif;
   --font-rodin-bold: "Rodin Pro Bold", sans-serif;
+  --font-new-rodin: "NewRodin Pro", sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-bg text-fg font-rodin tracking-[-0.35em];
+    @apply bg-bg text-fg font-rodin;
   }
 }
 
