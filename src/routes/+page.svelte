@@ -2,21 +2,19 @@
   import Option from "$lib/components/Option.svelte";
   import SelectionCursor from "$lib/components/SelectionCursor.svelte";
   import { fade } from "svelte/transition";
+  import type { OptionValue } from "$lib/types";
 
-  const options = [
-    "SKILL",
-    "ITEM",
-    "EQUIP",
-    "PERSONA",
-    "STATS",
-    "QUEST",
-    "SOCIAL LINK",
-    "CALENDAR",
-    "SYSTEM"
-  ];
-  const rotations = [-20, -10, -15, -15, 0, -14, -8, -5, 8];
-  const zIndices = [1, 0, 1, 2, 0, 1, 0, 1, 0];
-  const offsets = [-20, 0, 0, 0, 0, 0, 0, 0, 0];
+  const options: OptionValue[] = [
+    { name: "SKILL", rotation: -20, zIndex: 1, offsetX: -20, offsetY: 0 },
+    { name: "ITEM", rotation: -10, zIndex: 0, offsetX: 0, offsetY: 0 },
+    { name: "EQUIP", rotation: -15, zIndex: 1, offsetX: 0, offsetY: 0 },
+    { name: "PERSONA", rotation: -15, zIndex: 2, offsetX: 0, offsetY: 0 },
+    { name: "STATS", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 0 },
+    { name: "QUEST", rotation: -14, zIndex: 1, offsetX: 0, offsetY: 0 },
+    { name: "SOCIAL LINK", rotation: -8, zIndex: 0, offsetX: 0, offsetY: 0 },
+    { name: "CALENDAR", rotation: -5, zIndex: 1, offsetX: 0, offsetY: 0 },
+    { name: "SYSTEM", rotation: 8, zIndex: 0, offsetX: 0, offsetY: 0 }
+  ]
 
   let backgroundVideo: HTMLVideoElement;
   let isStarted = $state(false);
@@ -55,23 +53,19 @@
   <!-- options -->
   <div class="ml-260 flex flex-col items-start justify-center h-full relative -space-y-2">
     <SelectionCursor
-      left="{-50}px"
-      top="{selectedIndex * 86 + 180}px"
-      rotation={rotations[selectedIndex]}
-      scale={options[selectedIndex].length * 0.15 + 0.3}
+      left={-50}
+      top={selectedIndex * 86 + 180}
+      currentOption={options[selectedIndex]}
     />
 
     {#each options as option, i}
       <Option
         index={i}
-        zIndex={zIndices[i]}
-        rotation={rotations[i]}
         isSelected={selectedIndex === i}
         onSelect={() => setIndex(i)}
-        offsetX={offsets[i]}
-        offsetY={-200}
-      >
         {option}
+      >
+        {option.name}
       </Option>
     {/each}
   </div>

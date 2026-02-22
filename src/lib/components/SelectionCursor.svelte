@@ -1,17 +1,18 @@
 <script lang="ts">
-  let { left, top, rotation, scale }: {
-    left: string | number;
-    top: string | number;
-    rotation: number;
-    scale: number;
+  import type { OptionValue } from "$lib/types";
+
+  let { left, top, currentOption }: {
+    left: number;
+    top: number;
+    currentOption: OptionValue;
   } = $props();
 </script>
 
 <div
   class="absolute pointer-events-none z-5"
-  style="left: {left}; top: {top}"
-  style:transform="rotate({rotation + 15}deg) scaleX({scale}) scaleY({scale * 0.5 + 0.25})"
+  style="left: {left + currentOption.name.length * 6 - 40}px; top: {top}px"
+  style:transform="rotate({currentOption.rotation + 15}deg) scaleX({currentOption.name.length * 0.15 + 0.3}) scaleY({currentOption.name.length * 0.1 + 0.3})"
 >
   <img class="z-10" src="/selection-cursor.svg" alt="selection cursor">
-  <img class="absolute left top-4 scale-120 -z-3" src="/selection-cursor-background.svg" alt="selection cursor background">
+  <img class="absolute left top-4 scale-115 -z-3 -rotate-4" src="/selection-cursor-background.svg" alt="selection cursor background">
 </div>

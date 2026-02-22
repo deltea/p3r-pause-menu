@@ -2,6 +2,7 @@
   import { cn } from "$lib/utils";
   import { type Snippet } from "svelte";
   import { animate, spring } from "animejs";
+  import type { OptionValue } from "$lib/types";
 
   const colors = [
     "text-button-1",
@@ -10,15 +11,12 @@
   ];
 
   let element: HTMLButtonElement;
-  let { children, index, isSelected, onSelect, rotation, zIndex, offsetX, offsetY }: {
+  let { children, index, isSelected, onSelect, option }: {
     children: Snippet,
     index: number,
     isSelected: boolean,
-    onSelect: () => void,
-    rotation: number,
-    zIndex: number,
-    offsetX: number,
-    offsetY: number
+    onSelect: () => void
+    option: OptionValue
   } = $props();
 
   $effect(() => {
@@ -49,8 +47,8 @@
   bind:this={element}
   onmouseover={select}
   onfocus={select}
-  style:transform={`rotate(${rotation}deg)`}
-  style:z-index={zIndex}
+  style:transform={`rotate(${option.rotation}deg)`}
+  style:z-index={option.zIndex}
   style:clip-path="url(#selectionCursor)"
   class={cn(
     "text-8xl tracking-[-0.14em] italic cursor-pointer clip",
