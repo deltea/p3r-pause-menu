@@ -34,10 +34,11 @@
 }
 
 @utility masked-text {
-  mask: url(#selector-mask);
+  clip-path: url(#shape-clip);
+  /* mask: url(#selector-mask);
   -webkit-mask: url(#selector-mask);
   mask-repeat: no-repeat;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
+  -webkit-mask-size: contain; */
 }

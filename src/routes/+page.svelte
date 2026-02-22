@@ -58,7 +58,7 @@
   ></video>
 
   <!-- options -->
-  <div class="ml-230 flex flex-col items-start justify-center h-full relative -space-y-2">
+  <div class="ml-240 flex flex-col items-start justify-center h-full relative -space-y-2">
     {#if currentOptionElement}
       <SelectionCursor
         left={currentOptionElement.offsetLeft + options[selectedIndex].offsetX}
