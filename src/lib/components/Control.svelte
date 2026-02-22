@@ -7,11 +7,11 @@
   } = $props();
 </script>
 
-<div class="flex gap-0.5 items-center text-3xl">
+<div class="flex gap-0.5 items-center">
   <span class="rounded-full size-8 font-sans font-bold bg-bg-dark/80 outline-3 shadow-under outline-border text-xl border-3 border-fg flex items-center justify-center">
     {key}
   </span>
-  <span class="text-shadow-border font-sans tracking-tight italic">
+  <span class="text-shadow-border text-3xl font-sans tracking-tight italic">
     {@render children()}
   </span>
 </div>
