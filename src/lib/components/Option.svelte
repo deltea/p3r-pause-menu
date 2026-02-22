@@ -85,6 +85,6 @@
   </svg>
 
   <div class={cn("absolute inset-0 text-red masked-text", { "hidden": !isSelected })}>
-    {@render children()}
+    <!-- {@render children()} -->
   </div>
 </button>
