@@ -4,18 +4,18 @@
   import { fade } from "svelte/transition";
   import type { OptionValue } from "$lib/types";
   import { onMount } from "svelte";
-    import Control from "$lib/components/Control.svelte";
+  import Control from "$lib/components/Control.svelte";
 
   const options: OptionValue[] = [
-    { name: "SKILL", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 30 },
-    { name: "ITEM", rotation: -10, zIndex: 0, offsetX: 0, offsetY: 20 },
-    { name: "EQUIP", rotation: -15, zIndex: 1, offsetX: -60, offsetY: 20 },
-    { name: "PERSONA", rotation: -15, zIndex: 2, offsetX: -90, offsetY: 20 },
-    { name: "STATS", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 20 },
-    { name: "QUEST", rotation: -14, zIndex: 1, offsetX: -60, offsetY: 20 },
-    { name: "SOCIAL LINK", rotation: -8, zIndex: 2, offsetX: 0, offsetY: 0 },
-    { name: "CALENDAR", rotation: -5, zIndex: 1, offsetX: -80, offsetY: 0 },
-    { name: "SYSTEM", rotation: 8, zIndex: 0, offsetX: 20, offsetY: 0 }
+    { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 30 },
+    { name: "ITEM", description: "View/Use Items", rotation: -10, zIndex: 0, offsetX: 0, offsetY: 20 },
+    { name: "EQUIP", description: "View/Change Equipment", rotation: -15, zIndex: 1, offsetX: -60, offsetY: 20 },
+    { name: "PERSONA", description: "View/Change Personas", rotation: -15, zIndex: 2, offsetX: -90, offsetY: 20 },
+    { name: "STATS", description: "View Stats/Organize Party", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 20 },
+    { name: "QUEST", description: "View Requests", rotation: -14, zIndex: 1, offsetX: -60, offsetY: 20 },
+    { name: "SOCIAL LINK", description: "View Social Links", rotation: -8, zIndex: 2, offsetX: 0, offsetY: 0 },
+    { name: "CALENDAR", description: "View Calendar", rotation: -5, zIndex: 1, offsetX: -80, offsetY: 0 },
+    { name: "SYSTEM", description: "View Settings", rotation: 8, zIndex: 0, offsetX: 20, offsetY: 0 }
   ]
 
   let backgroundVideo: HTMLVideoElement;
@@ -83,7 +83,7 @@
   <!-- controls -->
   <div class="absolute bottom-0 right-0 font-new-rodin flex flex-col items-start">
     <p class="italic text-3xl pr-20 text-shadow-under">
-      View/Change Equipment
+      {options[selectedIndex].description}
     </p>
 
     <div class="flex items-center w-full">

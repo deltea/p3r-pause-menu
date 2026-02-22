@@ -3,29 +3,21 @@
 @font-face {
   font-family: "Rodin Pro";
   src: url("/fonts/Rodin Pro EB.otf") format("opentype");
-  font-weight: 300 800;
-  font-style: normal;
 }
 
 @font-face {
   font-family: "Rodin Pro Medium";
   src: url("/fonts/Rodin Pro DB.otf") format("opentype");
-  font-weight: 300 800;
-  font-style: normal;
 }
 
 @font-face {
   font-family: "Rodin Pro Bold";
   src: url("/fonts/Rodin Pro UB.otf") format("opentype");
-  font-weight: 300 800;
-  font-style: normal;
 }
 
 @font-face {
   font-family: "NewRodin Pro";
   src: url("/fonts/NewRodin Pro DB.otf") format("opentype");
-  font-weight: 300 800;
-  font-style: normal;
 }
 
 @theme {

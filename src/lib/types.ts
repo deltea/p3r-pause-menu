@@ -4,4 +4,5 @@ export interface OptionValue {
   zIndex: number;
   offsetX: number;
   offsetY: number;
+  description: string;
 }
