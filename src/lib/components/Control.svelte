@@ -8,8 +8,8 @@
 </script>
 
 <div class="flex gap-0.5 items-center text-3xl">
-  <span class="rounded-full size-8 font-bold text-xl border-2 border-fg flex items-center justify-center">
+  <span class="rounded-full size-8 font-sans font-bold bg-bg-dark/80 text-xl border-3 shadow-border border-fg flex items-center justify-center">
     {key}
   </span>
-  {@render children()}
+  <span class="text-shadow-border">{@render children()}</span>
 </div>

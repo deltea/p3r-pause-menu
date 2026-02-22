@@ -82,17 +82,17 @@
 
   <!-- controls -->
   <div class="absolute bottom-0 right-0 font-new-rodin flex flex-col items-start">
-    <p class="italic text-3xl pr-20">
+    <p class="italic text-3xl pr-20 text-shadow-under">
       View/Change Equipment
     </p>
 
     <div class="flex items-center w-full">
-      <span class="">Command</span>
-      <hr class="border border-fg w-full grow">
+      <span class="text-shadow-under">Command</span>
+      <hr class="border border-fg w-full grow shadow-under">
     </div>
 
     <!-- controls -->
-    <div class="flex gap-4 items-center justify-end w-full pr-20 mt-4 mb-6">
+    <div class="flex gap-4 items-center justify-end w-full pr-20 mt-4 mb-6 text-shadow-under">
       <Control key="B">Confirm</Control>
       <Control key="A">Close</Control>
     </div>

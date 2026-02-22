@@ -31,15 +31,37 @@
 @theme {
   --color-fg: #fff;
   --color-bg: #015FCC;
+  --color-bg-dark: #031F64;
   --color-red: #FF52CB;
 
   --color-button-1: #16CFFB;
   --color-button-2: #7DE6FD;
   --color-button-3: #77FEFC;
 
+  --color-border: #5D6A88;
+
   --font-rodin: "Rodin Pro Bold", sans-serif;
   --font-rodin-bold: "Rodin Pro Bold", sans-serif;
   --font-new-rodin: "NewRodin Pro", sans-serif;
+
+  --text-shadow-under: 0 1px 6px rgba(0,0,0,0.5), 0 -1px 6px rgba(0,0,0,0.5), 1px 0 6px rgba(0,0,0,0.5), -1px 0 6px rgba(0,0,0,0.5);
+  --shadow-under: 0 1px 6px rgba(0,0,0,0.5), 0 -1px 6px rgba(0,0,0,0.5), 1px 0 6px rgba(0,0,0,0.5), -1px 0 6px rgba(0,0,0,0.5);
+  --text-shadow-border:
+    0 3px 0 var(--color-border),
+    0 -3px 0 var(--color-border),
+    3px 0 0 var(--color-border),
+    -3px 0 0 var(--color-border),
+    -3px -3px 0 var(--color-border),
+    3px -3px 0 var(--color-border),
+    3px 3px 0 var(--color-border),
+    -3px 3px 0 var(--color-border),
+    0 1px 6px rgba(0,0,0,0.5), 0 -1px 6px rgba(0,0,0,0.5), 1px 0 6px rgba(0,0,0,0.5), -1px 0 6px rgba(0,0,0,0.5);
+  --shadow-border:
+    0 3px 0 var(--color-border),
+    0 -3px 0 var(--color-border),
+    3px 0 0 var(--color-border),
+    -3px 0 0 var(--color-border),
+    0 1px 6px rgba(0,0,0,0.5), 0 -1px 6px rgba(0,0,0,0.5), 1px 0 6px rgba(0,0,0,0.5), -1px 0 6px rgba(0,0,0,0.5);
 }
 
 @layer base {
