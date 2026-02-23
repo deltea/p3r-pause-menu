@@ -5,12 +5,15 @@
   import type { OptionValue } from "$lib/types";
 
   const colors = [
-    "text-button-1",
-    "text-button-2",
-    "text-button-3"
+    "fill-button-1",
+    "fill-button-2",
+    "fill-button-3"
   ];
 
-  let element: HTMLButtonElement;
+  let element: SVGElement;
+  let textElement: SVGTextElement;
+  let textRedElement: SVGTextElement;
+
   let { children, index, isSelected, onSelect, option }: {
     children: Snippet,
     index: number,
@@ -19,16 +22,20 @@
     option: OptionValue
   } = $props();
 
+  const selectorPath = "M 16.853754, 100.31573 133.14625, 49.684266 112.14751, 97.331142 Z";
+  const selectorMaskId = $derived(`selector-mask-${index}`);
+  const selectorTransform = $derived(`translate(-60, -20) rotate(8, 0, 100) scale(${option.name.length * 0.5 + 1}, 2)`);
+
   $effect(() => {
     if (isSelected) {
       select();
     } else {
       deselect();
     }
-  })
+  });
 
   function select() {
-    animate(element, {
+    animate([textElement, textRedElement], {
       scale: 1.5,
       duration: 100,
       ease: spring({ bounce: 0.5, stiffness: 300, duration: 100 }),
@@ -37,7 +44,7 @@
   }
 
   function deselect() {
-    animate(element, {
+    animate([textElement, textRedElement], {
       scale: 1,
       duration: 0
     });
@@ -52,39 +59,68 @@
   });
 </script>
 
-<button
+<svg
   bind:this={element}
+  width="850"
+  height="200"
+  xmlns="http://www.w3.org/2000/svg"
+  class="bgred-500/20 cursor-pointer outline-none"
+  transform-origin="25% center"
+  style:z-index={isSelected ? 5 : option.zIndex}
   onmouseover={onSelect}
-  onfocus={select}
-  style:z-index={option.zIndex}
-  id="option-{index}"
-  class={cn(
-    "text-7xl tracking-[-0.14em] italic cursor-pointer block relative",
-    {
-      [colors[(index + 2) % colors.length]]: !isSelected,
-      "text-black": isSelected,
-      "z-5!": isSelected,
-      "font-rodin-bold": isSelected,
-    }
-  )}
+  onfocus={onSelect}
+  role="button"
+  tabindex="0"
 >
-  {@render children()}
+  <defs>
+    <mask id={selectorMaskId} maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="850" height="200">
+      <rect width="100%" height="100%" fill="black" />
+      <g transform={selectorTransform} transform-origin="left center">
+        <path
+          fill="white"
+          d={selectorPath}
+        />
+      </g>
+    </mask>
+  </defs>
 
-  <svg width="0" height="0">
-    <defs>
-      <mask id="selector-mask">
-        <rect width="100%" height="100%" fill="black" />
-        <g transform="translate(-16.853754,-49.684265)">
-          <path
-            style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:5;paint-order:stroke fill markers;transform: rotate({option.rotation + 18}deg) scaleY(1) scaleX({1 + option.name.length * 0.08 - 0.6})"
-            d="M 16.853754,100.31573 133.14625,49.684266 112.14751,97.331142 Z"
-            id="path1" />
-        </g>
-      </mask>
-    </defs>
-  </svg>
+  {#if isSelected}
+    <g transform={selectorTransform} transform-origin="left center">
+      <rect width="100%" height="100%" fill="rgba(255, 0, 0, 0)" />
+      <path
+        class="fill-fg"
+        d={selectorPath}
+      />
+    </g>
+  {/if}
 
-  <div class={cn("absolute inset-0 text-red masked-text", { "hidden": !isSelected })}>
-    <!-- {@render children()} -->
-  </div>
-</button>
+  <text
+    bind:this={textElement}
+    transform-origin="25% center"
+    x="100"
+    y="120"
+    class={cn(
+      "text-7xl tracking-[-0.14em] italic",
+      {
+        [colors[(index + 2) % colors.length]]: !isSelected,
+        "text-black": isSelected,
+      }
+    )}
+  >
+    {option.name}
+  </text>
+
+  {#if isSelected}
+    <g mask={`url(#${selectorMaskId})`}>
+      <text
+        bind:this={textRedElement}
+        transform-origin="25% center"
+        x="100"
+        y="120"
+        class="text-7xl tracking-[-0.14em] italic fill-red"
+      >
+        {option.name}
+      </text>
+    </g>
+  {/if}
+</svg>

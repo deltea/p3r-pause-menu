@@ -1,21 +1,20 @@
 <script lang="ts">
   import Option from "$lib/components/Option.svelte";
-  import SelectionCursor from "$lib/components/SelectionCursor.svelte";
   import { fade } from "svelte/transition";
   import type { OptionValue } from "$lib/types";
   import { onMount } from "svelte";
   import Control from "$lib/components/Control.svelte";
 
   const options: OptionValue[] = [
-    { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 30 },
-    { name: "ITEM", description: "View/Use Items", rotation: -10, zIndex: 0, offsetX: 0, offsetY: 20 },
-    { name: "EQUIP", description: "View/Change Equipment", rotation: -15, zIndex: 1, offsetX: -60, offsetY: 20 },
-    { name: "PERSONA", description: "View/Change Personas", rotation: -15, zIndex: 2, offsetX: -90, offsetY: 20 },
-    { name: "STATS", description: "View Stats/Organize Party", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 20 },
-    { name: "QUEST", description: "View Requests", rotation: -14, zIndex: 1, offsetX: -60, offsetY: 20 },
+    { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: 0, offsetY: 0 },
+    { name: "ITEM", description: "View/Use Items", rotation: -10, zIndex: 0, offsetX: 0, offsetY: 0 },
+    { name: "EQUIP", description: "View/Change Equipment", rotation: -15, zIndex: 1, offsetX: 0, offsetY: 0 },
+    { name: "PERSONA", description: "View/Change Personas", rotation: -15, zIndex: 2, offsetX: 0, offsetY: 0 },
+    { name: "STATS", description: "View Stats/Organize Party", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 0 },
+    { name: "QUEST", description: "View Requests", rotation: -14, zIndex: 1, offsetX: 0, offsetY: 0 },
     { name: "SOCIAL LINK", description: "View Social Links", rotation: -8, zIndex: 2, offsetX: 0, offsetY: 0 },
-    { name: "CALENDAR", description: "View Calendar", rotation: -5, zIndex: 1, offsetX: -80, offsetY: 0 },
-    { name: "SYSTEM", description: "View Settings", rotation: 8, zIndex: 0, offsetX: 20, offsetY: 0 }
+    { name: "CALENDAR", description: "View Calendar", rotation: -5, zIndex: 1, offsetX: 0, offsetY: 0 },
+    { name: "SYSTEM", description: "View Settings", rotation: 8, zIndex: 0, offsetX: 0, offsetY: 0 }
   ]
 
   let backgroundVideo: HTMLVideoElement;
@@ -59,15 +58,7 @@
   ></video>
 
   <!-- options -->
-  <div class="ml-260 flex flex-col items-start justify-center h-full relative -space-y-2">
-    {#if currentOptionElement}
-      <SelectionCursor
-        left={currentOptionElement.offsetLeft + options[selectedIndex].offsetX}
-        top={currentOptionElement.offsetTop + options[selectedIndex].offsetY}
-        currentOption={options[selectedIndex]}
-      />
-    {/if}
-
+  <div class="ml-240 flex flex-col items-start justify-center h-full relative -space-y-32">
     {#each options as option, i}
       <Option
         index={i}
