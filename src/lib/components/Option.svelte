@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cn } from "$lib/utils";
   import { onMount, type Snippet } from "svelte";
-  import { animate, spring, utils } from "animejs";
+  import { animate, createTimeline, spring, utils } from "animejs";
   import type { OptionValue } from "$lib/types";
 
   const colors = [
@@ -13,6 +13,7 @@
   let element: SVGElement;
   let textElement: SVGTextElement;
   let textRedElement: SVGTextElement;
+  let backgroundElement: SVGPathElement;
 
   let { index, isSelected, onSelect, option }: {
     index: number,
@@ -54,6 +55,17 @@
       translateX: option.offsetX,
       translateY: option.offsetY,
       rotate: option.rotation
+    });
+
+    createTimeline({
+      loop: Infinity
+    }).add(backgroundElement, {
+      delay: 600,
+      duration: 100,
+      scale: 1.05,
+    }).add(backgroundElement, {
+      duration: 50,
+      scale: 1,
     });
   });
 </script>
@@ -98,18 +110,18 @@
       </mask>
     </defs>
 
-    {#if isSelected}
-      <g transform={selectorTransform} transform-origin="left center">
-        <path
-          class="fill-pink"
-          d="M 12.7428765,100.50088 144.25712,47.499123 116.75625,95.465764 Z"
-        />
-        <path
-          class="fill-fg"
-          d={selectorPath}
-        />
-      </g>
-    {/if}
+    <g transform={selectorTransform} transform-origin="left center" style:display={isSelected ? "block" : "none"}>
+      <path
+        bind:this={backgroundElement}
+        class="fill-pink"
+        transform-origin="52 100"
+        d="M 12.7428765,100.50088 144.25712,47.499123 116.75625,95.465764 Z"
+      />
+      <path
+        class="fill-fg"
+        d={selectorPath}
+      />
+    </g>
 
     <text
       bind:this={textElement}
