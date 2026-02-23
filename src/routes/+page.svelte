@@ -39,6 +39,12 @@
   let selectedIndex = $state(0);
   let currentOptionElement = $state<HTMLButtonElement>();
 
+  $effect(() => {
+    if (isMusicEnabled || isSFXEnabled) {
+      playSound();
+    }
+  });
+
   const navigationSound = new Howl({
     src: ["/sfx/navigation.wav"],
     volume: 0.5,
