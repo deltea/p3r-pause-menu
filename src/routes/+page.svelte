@@ -3,7 +3,10 @@
   import { fade } from "svelte/transition";
   import type { OptionValue } from "$lib/types";
   import { onMount } from "svelte";
+  import { Howl } from "howler";
+
   import Control from "$lib/components/Control.svelte";
+  import SettingsOption from "$lib/components/SettingsOption.svelte";
 
   const options: OptionValue[] = [
     { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 55 },
@@ -15,11 +18,24 @@
     { name: "SOCIAL LINK", description: "View Social Links", rotation: -8, zIndex: 2, offsetX: -20, offsetY: 20 },
     { name: "CALENDAR", description: "View Calendar", rotation: -5, zIndex: 1, offsetX: -60, offsetY: 10 },
     { name: "SYSTEM", description: "View Settings", rotation: 8, zIndex: 0, offsetX: 0, offsetY: 0 }
-  ]
+  ];
+
+  const musicTracks = [
+    "Changing Seasons -Reload-.mp3",
+    "Color Your Night.mp3",
+    "Full Moon Full Life.mp3",
+    "It's Going Down Now.mp3",
+    "Mass Destruction -Reload-.mp3",
+    "When The Moon's Reaching Out Stars -Reload-.mp3",
+    "キミの記憶 -Reload-.mp3",
+    "全ての人の魂の戦い.mp3",
+    "巌戸台分寮 -Reload-.mp3"
+  ];
 
   let backgroundVideo: HTMLVideoElement;
   let isStarted = $state(false);
   let isMusicEnabled = $state(true);
+  let isSFXEnabled = $state(true);
   let selectedIndex = $state(0);
   let currentOptionElement = $state<HTMLButtonElement>();
 
@@ -35,6 +51,16 @@
 
   onMount(() => {
     setIndex(0);
+
+    if (isMusicEnabled) {
+      const randomIndex = Math.floor(Math.random() * musicTracks.length);
+      new Howl({
+        src: `/music/${musicTracks[randomIndex]}`,
+        loop: true,
+        autoplay: true,
+        volume: 0.5,
+      });
+    }
   });
 </script>
 
@@ -57,15 +83,14 @@
         </h2>
       </div>
 
-      <button
-        onclick={() => (isMusicEnabled = !isMusicEnabled)}
-        class="flex gap-8 items-center justify-between hover:bg-fg w-[32rem] py-2 px-6 rounded-md text-button-3 hover:text-muted font-skip font-bold text-2xl cursor-pointer hover:shadow-red"
-      >
-        <span>Toggle Music</span>
-        <div class="flex justify-center items-center rounded-full h-8 w-24 bg-black text-fg font-new-rodin text-xl font-normal">
-          {isMusicEnabled ? "On" : "Off"}
-        </div>
-      </button>
+      <div class="flex flex-col gap-2">
+        <SettingsOption bind:value={isMusicEnabled}>
+          Toggle Music
+        </SettingsOption>
+        <SettingsOption bind:value={isSFXEnabled}>
+          Toggle SFX
+        </SettingsOption>
+      </div>
 
       <button onclick={start} class="text-6xl flex gap-4 cursor-pointer">
         <span class="tracking-[-0.05em]">ENTER</span>
@@ -119,5 +144,3 @@
     <span class="text-black">MAIN</span>
   </div>
 </main>
-
-<audio src="/"></audio>
