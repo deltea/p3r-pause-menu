@@ -4,7 +4,7 @@
   import type { OptionValue } from "$lib/types";
   import { onMount } from "svelte";
   import { Howl } from "howler";
-  import { animate } from "animeajs";
+  import { animate } from "animejs";
 
   import Control from "$lib/components/Control.svelte";
   import SettingsOption from "$lib/components/SettingsOption.svelte";
