@@ -8,6 +8,7 @@
 
   import Control from "$lib/components/Control.svelte";
   import SettingsOption from "$lib/components/SettingsOption.svelte";
+    import { isMobileUserAgentData } from "$lib/utils";
 
   const options: OptionValue[] = [
     { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 55 },
@@ -40,7 +41,6 @@
   let selectedIndex = $state(0);
   let currentOptionElement = $state<HTMLButtonElement>();
   let settingsOptionElement = $state<HTMLDivElement>();
-
   let currentSettingIndex = $state(0);
 
   const navigationSound = new Howl({
@@ -103,6 +103,13 @@
 </script>
 
 <main class="h-screen w-screen relative overflow-hidden">
+  {#if isMobileUserAgentData()}
+    <div class="size-full bg-bg fixed flex flex-col justify-center items-center z-100 font-skip font-bold text-2xl">
+      <p>Sorry, this website is not supported for for your device.</p>
+      <p>Try viewing this site on a computer!</p>
+    </div>
+  {/if}
+
   {#if !isStarted}
     <div class="fixed bg-bg/90 size-full flex flex-col gap-32 justify-center items-center z-10" transition:fade>
       <div class="rotate-3 space-y-2">
@@ -129,9 +136,10 @@
           Toggle SFX
         </SettingsOption>
 
-        <div bind:this={settingsOptionElement} class="w-[32rem] h-12 bg-red -z-1 absolute -top-2 -right-1 rounded-md">
-
-        </div>
+        <div
+          bind:this={settingsOptionElement}
+          class="w-[32rem] h-12 bg-red -z-1 absolute -top-2 -right-1 rounded-md"
+        ></div>
       </div>
 
       <button onclick={start} class="text-6xl flex gap-4 cursor-pointer">
