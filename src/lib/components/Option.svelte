@@ -14,8 +14,7 @@
   let textElement: SVGTextElement;
   let textRedElement: SVGTextElement;
 
-  let { children, index, isSelected, onSelect, option }: {
-    children: Snippet,
+  let { index, isSelected, onSelect, option }: {
     index: number,
     isSelected: boolean,
     onSelect: () => void
@@ -59,68 +58,81 @@
   });
 </script>
 
-<svg
-  bind:this={element}
-  width="850"
-  height="200"
-  xmlns="http://www.w3.org/2000/svg"
-  class="bgred-500/20 cursor-pointer outline-none"
-  transform-origin="25% center"
-  style:z-index={isSelected ? 5 : option.zIndex}
-  onmouseover={onSelect}
-  onfocus={onSelect}
-  role="button"
-  tabindex="0"
->
-  <defs>
-    <mask id={selectorMaskId} maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="850" height="200">
-      <rect width="100%" height="100%" fill="black" />
+<div class="relative pointer-events-none">
+  <button
+    class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-16 outline-none pointer-events-auto cursor-pointer"
+    onmouseover={onSelect}
+    onfocus={onSelect}
+    title={option.description}
+  ></button>
+
+  <svg
+    bind:this={element}
+    width="850"
+    height="200"
+    xmlns="http://www.w3.org/2000/svg"
+    class="cursor-pointer outline-none pointer-events-none"
+    transform-origin="25% center"
+    style:z-index={isSelected ? 5 : option.zIndex}
+  >
+    <defs>
+      <mask
+        id={selectorMaskId}
+        maskUnits="userSpaceOnUse"
+        maskContentUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="850"
+        height="200"
+      >
+        <rect width="100%" height="100%" fill="black" />
+        <g transform={selectorTransform} transform-origin="left center">
+          <path
+            fill="white"
+            d={selectorPath}
+          />
+        </g>
+      </mask>
+    </defs>
+
+    {#if isSelected}
       <g transform={selectorTransform} transform-origin="left center">
+        <rect width="100%" height="100%" fill="rgba(255, 0, 0, 0)" />
         <path
-          fill="white"
+          class="fill-fg"
           d={selectorPath}
         />
       </g>
-    </mask>
-  </defs>
+    {/if}
 
-  {#if isSelected}
-    <g transform={selectorTransform} transform-origin="left center">
-      <rect width="100%" height="100%" fill="rgba(255, 0, 0, 0)" />
-      <path
-        class="fill-fg"
-        d={selectorPath}
-      />
-    </g>
-  {/if}
+    <text
+      bind:this={textElement}
+      transform-origin="25% center"
+      x="100"
+      y="120"
+      class={cn(
+        "text-7xl tracking-[-0.14em] italic",
+        {
+          [colors[(index + 2) % colors.length]]: !isSelected,
+          "text-black": isSelected,
+        }
+      )}
+    >
+      {option.name}
+    </text>
 
-  <text
-    bind:this={textElement}
-    transform-origin="25% center"
-    x="100"
-    y="120"
-    class={cn(
-      "text-7xl tracking-[-0.14em] italic",
-      {
-        [colors[(index + 2) % colors.length]]: !isSelected,
-        "text-black": isSelected,
-      }
-    )}
-  >
-    {option.name}
-  </text>
-
-  {#if isSelected}
-    <g mask={`url(#${selectorMaskId})`}>
-      <text
-        bind:this={textRedElement}
-        transform-origin="25% center"
-        x="100"
-        y="120"
-        class="text-7xl tracking-[-0.14em] italic fill-red"
-      >
-        {option.name}
-      </text>
-    </g>
-  {/if}
-</svg>
+    {#if isSelected}
+      <g mask={`url(#${selectorMaskId})`}>
+        <text
+          bind:this={textRedElement}
+          transform-origin="25% center"
+          x="100"
+          y="120"
+          class="text-7xl tracking-[-0.14em] italic fill-red"
+        >
+          {option.name}
+        </text>
+      </g>
+    {/if}
+  </svg>
+</div>

@@ -65,9 +65,7 @@
         isSelected={selectedIndex === i}
         onSelect={() => setIndex(i)}
         {option}
-      >
-        {option.name}
-      </Option>
+      />
     {/each}
   </div>
 
