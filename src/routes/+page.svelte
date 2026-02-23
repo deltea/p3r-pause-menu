@@ -151,7 +151,7 @@
   ></video>
 
   <!-- options -->
-  <div class="ml-204 flex flex-col items-start justify-center h-full relative -space-y-32">
+  <div class="ml-216 flex flex-col items-start justify-center h-full relative -space-y-32">
     {#each options as option, i}
       <Option
         index={i}
