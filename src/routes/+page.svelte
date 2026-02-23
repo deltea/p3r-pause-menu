@@ -45,6 +45,7 @@
   });
 
   function setIndex(index: number) {
+    if (index === selectedIndex) return;
     selectedIndex = index;
     currentOptionElement = document.getElementById(`option-${index}`) as HTMLButtonElement;
     playSound();
@@ -73,6 +74,16 @@
 
   onMount(() => {
     setIndex(0);
+
+    document.addEventListener("keydown", (e) => {
+      if (!isStarted) return;
+
+      if (e.key === "ArrowDown" || e.key === "s") {
+        setIndex((selectedIndex + 1) % options.length);
+      } else if (e.key === "ArrowUp" || e.key === "w") {
+        setIndex((selectedIndex - 1 + options.length) % options.length);
+      }
+    });
   });
 </script>
 
