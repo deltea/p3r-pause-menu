@@ -1,13 +1,12 @@
 <script lang="ts">
 	import "./layout.css";
-	import favicon from "$lib/assets/favicon.svg";
 	import "iconify-icon";
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<title>Persona 3 Reload Pause Menu</title>
 </svelte:head>
 
 {@render children()}

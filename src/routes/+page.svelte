@@ -4,10 +4,10 @@
   import type { OptionValue } from "$lib/types";
   import { onMount } from "svelte";
   import { Howl } from "howler";
+  import { animate } from "animeajs";
 
   import Control from "$lib/components/Control.svelte";
   import SettingsOption from "$lib/components/SettingsOption.svelte";
-    import { animate } from "animejs";
 
   const options: OptionValue[] = [
     { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 55 },
