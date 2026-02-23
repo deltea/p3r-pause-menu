@@ -21,9 +21,9 @@
     option: OptionValue
   } = $props();
 
-  const selectorPath = "M 16.853754, 100.31573 133.14625, 49.684266 112.14751, 97.331142 Z";
+  const selectorPath = "M 24.853754, 98.31573 135.14625, 49.684266 114.14751, 97.331142 Z";
   const selectorMaskId = $derived(`selector-mask-${index}`);
-  const selectorTransform = $derived(`translate(-60, -20) rotate(8, 0, 100) scale(${option.name.length * 0.5 + 1}, 2)`);
+  const selectorTransform = $derived(`translate(-60, -10) rotate(8, 0, 100) scale(${option.name.replaceAll(" ", "").length * 0.5 + 1.5}, 3)`);
 
   $effect(() => {
     if (isSelected) {
@@ -58,7 +58,7 @@
   });
 </script>
 
-<div class="relative pointer-events-none">
+<div class="relative pointer-events-none" style:z-index={isSelected ? 5 : option.zIndex}>
   <button
     class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-16 outline-none pointer-events-auto cursor-pointer"
     onmouseover={onSelect}
@@ -68,12 +68,11 @@
 
   <svg
     bind:this={element}
-    width="850"
+    width="950"
     height="200"
     xmlns="http://www.w3.org/2000/svg"
     class="cursor-pointer outline-none pointer-events-none"
     transform-origin="25% center"
-    style:z-index={isSelected ? 5 : option.zIndex}
   >
     <defs>
       <mask
@@ -82,7 +81,7 @@
         maskContentUnits="userSpaceOnUse"
         x="0"
         y="0"
-        width="850"
+        width="950"
         height="200"
       >
         <rect width="100%" height="100%" fill="black" />
@@ -91,13 +90,20 @@
             fill="white"
             d={selectorPath}
           />
+          <path
+            fill="white"
+            d="M 12.7428765,100.50088 144.25712,47.499123 116.75625,95.465764 Z"
+          />
         </g>
       </mask>
     </defs>
 
     {#if isSelected}
       <g transform={selectorTransform} transform-origin="left center">
-        <rect width="100%" height="100%" fill="rgba(255, 0, 0, 0)" />
+        <path
+          class="fill-pink"
+          d="M 12.7428765,100.50088 144.25712,47.499123 116.75625,95.465764 Z"
+        />
         <path
           class="fill-fg"
           d={selectorPath}
@@ -108,7 +114,7 @@
     <text
       bind:this={textElement}
       transform-origin="25% center"
-      x="100"
+      x="150"
       y="120"
       class={cn(
         "text-7xl tracking-[-0.14em] italic",
@@ -126,7 +132,7 @@
         <text
           bind:this={textRedElement}
           transform-origin="25% center"
-          x="100"
+          x="150"
           y="120"
           class="text-7xl tracking-[-0.14em] italic fill-red"
         >
