@@ -7,6 +7,7 @@
 
   import Control from "$lib/components/Control.svelte";
   import SettingsOption from "$lib/components/SettingsOption.svelte";
+    import { animate } from "animejs";
 
   const options: OptionValue[] = [
     { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 55 },
@@ -38,12 +39,9 @@
   let isSFXEnabled = $state(true);
   let selectedIndex = $state(0);
   let currentOptionElement = $state<HTMLButtonElement>();
+  let settingsOptionElement = $state<HTMLDivElement>();
 
-  $effect(() => {
-    if (isMusicEnabled || isSFXEnabled) {
-      playSound();
-    }
-  });
+  let currentSettingIndex = $state(0);
 
   const navigationSound = new Howl({
     src: ["/sfx/navigation.wav"],
@@ -55,6 +53,17 @@
     selectedIndex = index;
     currentOptionElement = document.getElementById(`option-${index}`) as HTMLButtonElement;
     playSound();
+  }
+
+  function setSettingsIndex(index: number) {
+    if (index === currentSettingIndex) return;
+    currentSettingIndex = index;
+    playSound();
+    animate(settingsOptionElement!, {
+      translateY: index * 56,
+      duration: 100,
+      easing: "easeOutQuad"
+    });
   }
 
   function start() {
@@ -112,13 +121,17 @@
         </h2>
       </div>
 
-      <div class="flex flex-col gap-2">
-        <SettingsOption bind:value={isMusicEnabled}>
+      <div class="flex flex-col gap-2 relative">
+        <SettingsOption onSelect={() => setSettingsIndex(0)} isSelected={currentSettingIndex === 0} bind:value={isMusicEnabled}>
           Toggle Music
         </SettingsOption>
-        <SettingsOption bind:value={isSFXEnabled}>
+        <SettingsOption onSelect={() => setSettingsIndex(1)} isSelected={currentSettingIndex === 1} bind:value={isSFXEnabled}>
           Toggle SFX
         </SettingsOption>
+
+        <div bind:this={settingsOptionElement} class="w-[32rem] h-12 bg-red -z-1 absolute -top-2 -right-1 rounded-md">
+
+        </div>
       </div>
 
       <button onclick={start} class="text-6xl flex gap-4 cursor-pointer">

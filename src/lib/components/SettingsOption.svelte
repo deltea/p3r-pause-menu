@@ -1,15 +1,23 @@
 <script lang="ts">
+    import { cn } from "$lib/utils";
   import type { Snippet } from "svelte";
 
-  let { value = $bindable(true), children }: {
+  let { value = $bindable(true), isSelected, onSelect, children }: {
     value: boolean,
-    children: Snippet
+    isSelected: boolean,
+    onSelect: () => void
+    children: Snippet,
   } = $props();
 </script>
 
 <button
   onclick={() => (value = !value)}
-  class="flex gap-8 items-center justify-between hover:bg-fg w-[32rem] py-2 px-6 rounded-md text-button-3 hover:text-muted font-skip font-bold text-2xl cursor-pointer hover:shadow-red"
+  onmouseenter={onSelect}
+  onfocus={onSelect}
+  class={cn("flex gap-8 items-center justify-between w-[32rem] py-2 px-6 rounded-md font-skip font-bold text-2xl cursor-pointer", {
+    "bg-fg text-bg text-muted": isSelected,
+    "text-button-3": !isSelected
+  })}
 >
   <span>{@render children()}</span>
   <div class="flex justify-center items-center rounded-full h-8 w-24 bg-black text-fg font-new-rodin text-xl font-normal">
