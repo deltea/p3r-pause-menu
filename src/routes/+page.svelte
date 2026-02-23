@@ -39,18 +39,20 @@
   let selectedIndex = $state(0);
   let currentOptionElement = $state<HTMLButtonElement>();
 
+  const navigationSound = new Howl({
+    src: ["/sfx/navigation.wav"],
+    volume: 0.5,
+  });
+
   function setIndex(index: number) {
     selectedIndex = index;
     currentOptionElement = document.getElementById(`option-${index}`) as HTMLButtonElement;
+    playSound();
   }
 
   function start() {
     isStarted = true;
     backgroundVideo.play();
-  }
-
-  onMount(() => {
-    setIndex(0);
 
     if (isMusicEnabled) {
       const randomIndex = Math.floor(Math.random() * musicTracks.length);
@@ -61,6 +63,16 @@
         volume: 0.5,
       });
     }
+  }
+
+  function playSound() {
+    if (isSFXEnabled) {
+      navigationSound.play();
+    }
+  }
+
+  onMount(() => {
+    setIndex(0);
   });
 </script>
 
