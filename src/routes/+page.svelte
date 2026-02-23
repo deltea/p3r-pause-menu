@@ -6,14 +6,14 @@
   import Control from "$lib/components/Control.svelte";
 
   const options: OptionValue[] = [
-    { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: 0, offsetY: 0 },
-    { name: "ITEM", description: "View/Use Items", rotation: -15, zIndex: 0, offsetX: 0, offsetY: 0 },
-    { name: "EQUIP", description: "View/Change Equipment", rotation: -15, zIndex: 1, offsetX: 0, offsetY: 0 },
-    { name: "PERSONA", description: "View/Change Personas", rotation: -15, zIndex: 2, offsetX: 0, offsetY: 0 },
-    { name: "STATS", description: "View Stats/Organize Party", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 0 },
-    { name: "QUEST", description: "View Requests", rotation: -14, zIndex: 1, offsetX: 0, offsetY: 0 },
-    { name: "SOCIAL LINK", description: "View Social Links", rotation: -8, zIndex: 2, offsetX: 0, offsetY: 0 },
-    { name: "CALENDAR", description: "View Calendar", rotation: -5, zIndex: 1, offsetX: 0, offsetY: 0 },
+    { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 55 },
+    { name: "ITEM", description: "View/Use Items", rotation: -15, zIndex: 0, offsetX: 0, offsetY: 30 },
+    { name: "EQUIP", description: "View/Change Equipment", rotation: -20, zIndex: 1, offsetX: -50, offsetY: 35 },
+    { name: "PERSONA", description: "View/Change Personas", rotation: -15, zIndex: 2, offsetX: -80, offsetY: 40 },
+    { name: "STATS", description: "View Stats/Organize Party", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 15 },
+    { name: "QUEST", description: "View Requests", rotation: -14, zIndex: 1, offsetX: -40, offsetY: 20 },
+    { name: "SOCIAL LINK", description: "View Social Links", rotation: -8, zIndex: 2, offsetX: -20, offsetY: 20 },
+    { name: "CALENDAR", description: "View Calendar", rotation: -5, zIndex: 1, offsetX: -60, offsetY: 10 },
     { name: "SYSTEM", description: "View Settings", rotation: 8, zIndex: 0, offsetX: 0, offsetY: 0 }
   ]
 
@@ -58,7 +58,7 @@
   ></video>
 
   <!-- options -->
-  <div class="ml-240 flex flex-col items-start justify-center h-full relative -space-y-32">
+  <div class="ml-204 flex flex-col items-start justify-center h-full relative -space-y-32">
     {#each options as option, i}
       <Option
         index={i}
