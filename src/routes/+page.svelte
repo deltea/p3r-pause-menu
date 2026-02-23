@@ -19,6 +19,7 @@
 
   let backgroundVideo: HTMLVideoElement;
   let isStarted = $state(false);
+  let isMusicEnabled = $state(true);
   let selectedIndex = $state(0);
   let currentOptionElement = $state<HTMLButtonElement>();
 
@@ -39,10 +40,35 @@
 
 <main class="h-screen w-screen relative overflow-hidden">
   {#if !isStarted}
-    <div class="fixed bg-bg/80 size-full flex flex-col gap-32 justify-center items-center z-10 tracking-[-0.35em]" transition:fade>
-      <h1 class="bg-fg text-bg px-6 py-4 rounded text-6xl rotate-4">PERSONA 3 PAUSE MENU</h1>
+    <div class="fixed bg-bg/90 size-full flex flex-col gap-32 justify-center items-center z-10" transition:fade>
+      <div class="rotate-3 space-y-2">
+        <h1 class="bg-fg text-bg px-6 py-4 rounded-md text-6xl tracking-[-0.08em]">
+          PERSONA 3 RELOAD<br>
+          PAUSE MENU
+        </h1>
+        <h2 class="flex items-center w-full gap-2 italic text-xl font-new-rodin text-shadow-under">
+          <span>
+            Recreated with Svelte
+          </span>
+          <hr class="border border-fg grow shadow-under">
+          <a href="https://deltea.space">
+            By deltea
+          </a>
+        </h2>
+      </div>
+
+      <button
+        onclick={() => (isMusicEnabled = !isMusicEnabled)}
+        class="flex gap-8 items-center justify-between hover:bg-fg w-[32rem] py-2 px-6 rounded-md text-button-3 hover:text-muted font-skip font-bold text-2xl cursor-pointer hover:shadow-red"
+      >
+        <span>Toggle Music</span>
+        <div class="flex justify-center items-center rounded-full h-8 w-24 bg-black text-fg font-new-rodin text-xl font-normal">
+          {isMusicEnabled ? "On" : "Off"}
+        </div>
+      </button>
+
       <button onclick={start} class="text-6xl flex gap-4 cursor-pointer">
-        <span>ENTER</span>
+        <span class="tracking-[-0.05em]">ENTER</span>
         <iconify-icon icon="mdi:arrow-right-bold" class=" text-6xl"></iconify-icon>
       </button>
     </div>
@@ -75,9 +101,9 @@
       {options[selectedIndex].description}
     </p>
 
-    <div class="flex items-center w-full">
+    <div class="flex items-center w-full gap-1">
       <span class="text-shadow-under">Command</span>
-      <hr class="border border-fg w-full grow shadow-under">
+      <hr class="border border-fg grow shadow-under">
     </div>
 
     <!-- controls -->
@@ -93,3 +119,5 @@
     <span class="text-black">MAIN</span>
   </div>
 </main>
+
+<audio src="/"></audio>
