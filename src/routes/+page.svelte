@@ -103,7 +103,7 @@
 </script>
 
 <main class="h-screen w-screen relative overflow-hidden">
-  <div class="size-full bg-bg fixed 2xl:hidden flex flex-col justify-center items-center z-100 font-skip font-bold text-2xl">
+  <div class="size-full bg-bg fixed 2xl:hidden flex flex-col justify-center items-center z-100 font-skip font-bold text-2xl px-8">
     <p>Sorry, this website is not supported for for your device.</p>
     <p>Try viewing this site on a computer!</p>
   </div>
