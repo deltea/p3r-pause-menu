@@ -13,7 +13,7 @@
   const options: OptionValue[] = [
     { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 55 },
     { name: "ITEM", description: "View/Use Items", rotation: -15, zIndex: 0, offsetX: 0, offsetY: 30 },
-    { name: "PROJECTS", description: "View/Change Equipment", rotation: -20, zIndex: 1, offsetX: -50, offsetY: 35 },
+    { name: "EQUIP", description: "View/Change Equipment", rotation: -20, zIndex: 1, offsetX: -50, offsetY: 35 },
     { name: "PERSONA", description: "View/Change Personas", rotation: -15, zIndex: 2, offsetX: -80, offsetY: 40 },
     { name: "STATS", description: "View Stats/Organize Party", rotation: 0, zIndex: 0, offsetX: 0, offsetY: 15 },
     { name: "QUEST", description: "View Requests", rotation: -14, zIndex: 1, offsetX: -40, offsetY: 20 },
