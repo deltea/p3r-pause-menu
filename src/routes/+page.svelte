@@ -103,13 +103,13 @@
 </script>
 
 <main class="h-screen w-screen relative overflow-hidden">
-  <div class="size-full bg-bg fixed 2xl:hidden flex flex-col justify-center items-center z-100 font-skip font-bold text-2xl px-8">
+  <div class="size-full bg-bg fixed xl:hidden flex flex-col justify-center items-center z-100 font-skip font-bold text-2xl px-8">
     <p>Sorry, this website is not supported for for your device.</p>
     <p>Try viewing this site on a computer!</p>
   </div>
 
   {#if !isStarted}
-    <div class="fixed bg-bg/90 size-full flex flex-col gap-32 justify-center items-center z-10" transition:fade>
+    <div class="fixed bg-bg/90 size-full flex flex-col gap-32 justify-center items-center z-20" transition:fade>
       <div class="rotate-3 space-y-2">
         <h1 class="bg-fg text-bg px-6 py-4 rounded-md text-6xl tracking-[-0.08em]">
           PERSONA 3 RELOAD<br>
@@ -157,7 +157,7 @@
   ></video>
 
   <!-- options -->
-  <div class="left-[55rem] flex flex-col items-start justify-center h-full relative -space-y-32">
+  <div class="3xl:left-[55rem] left-[42rem] flex flex-col items-start justify-center h-full relative -space-y-32">
     {#each options as option, i}
       <Option
         index={i}
@@ -169,7 +169,7 @@
   </div>
 
   <!-- controls -->
-  <div class="absolute bottom-0 right-0 font-new-rodin flex flex-col items-start">
+  <div class="absolute bottom-0 right-0 font-new-rodin flex flex-col items-start z-10">
     <p class="italic text-3xl pr-20 text-shadow-under">
       {options[selectedIndex].description}
     </p>
