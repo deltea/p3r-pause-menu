@@ -187,8 +187,7 @@
   </div>
 
   <!-- side text -->
-  <div class="text-[28rem] absolute flex gap-8 w-[100vh] h-[28rem] rotate-90 -translate-y-[42rem] origin-bottom-left left-0 top-0 tracking-[-0.16em] text-muted italic">
-    <!-- <span class="z-1">0{selectedIndex + 1}</span> -->
-    <!-- <span class="text-black">MAIN</span> -->
+  <div class="text-[360px] absolute rotate-90 -left-18 -top-70 tracking-[-0.2em] text-muted italic">
+    <span class="z-1">0{selectedIndex + 1}</span>
   </div>
 </main>
