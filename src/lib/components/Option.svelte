@@ -14,6 +14,7 @@
   let textElement: SVGTextElement;
   let textRedElement: SVGTextElement;
   let backgroundElement: SVGPathElement;
+  let backgroundMaskElement: SVGPathElement;
 
   let { index, isSelected, onSelect, option }: {
     index: number,
@@ -60,11 +61,11 @@
 
     createTimeline({
       loop: Infinity
-    }).add(backgroundElement, {
+    }).add([backgroundElement, backgroundMaskElement], {
       delay: 600,
       duration: 100,
       scale: 1.05,
-    }).add(backgroundElement, {
+    }).add([backgroundElement, backgroundMaskElement], {
       duration: 50,
       scale: 1,
     });
@@ -104,6 +105,8 @@
             d={selectorPath}
           />
           <path
+            bind:this={backgroundMaskElement}
+            transform-origin="52 100"
             fill="white"
             d={selectorBackgroundPath}
           />
