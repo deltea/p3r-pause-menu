@@ -8,7 +8,6 @@
 
   import Control from "$lib/components/Control.svelte";
   import SettingsOption from "$lib/components/SettingsOption.svelte";
-    import { isMobileUserAgentData } from "$lib/utils";
 
   const options: OptionValue[] = [
     { name: "SKILL", description: "Use a Skill", rotation: -25, zIndex: 1, offsetX: -60, offsetY: 55 },
@@ -187,7 +186,7 @@
   </div>
 
   <!-- side text -->
-  <div class="text-[360px] absolute rotate-90 -left-18 -top-70 tracking-[-0.2em] text-muted italic">
+  <div class="absolute rotate-90 tracking-[-0.2em] text-muted italic" style="left: -4.5rem; top: -18rem; font-size: 37vh;">
     <span class="z-1">0{selectedIndex + 1}</span>
   </div>
 </main>
